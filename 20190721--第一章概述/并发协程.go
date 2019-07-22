@@ -14,6 +14,7 @@ func task(id int) {
 
 //使用channel和goroutine实现
 
+//消费者
 func consumer(data chan int, done chan bool) {
 	for v := range data {
 		fmt.Println("recv: ", v)
@@ -21,6 +22,7 @@ func consumer(data chan int, done chan bool) {
 	done <- true
 }
 
+//生产者
 func producer(data chan int) {
 	for i := 0; i < 5; i++ {
 		data <- i //往通道里面写入数据
